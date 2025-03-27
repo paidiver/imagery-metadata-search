@@ -1,7 +1,9 @@
 'use client'
+import { useCallback, useEffect, useState } from 'react'
+
 import axios from 'axios'
-import React, { useCallback, useEffect, useState } from 'react'
-import { Card, CardBody } from '@heroui/react'
+
+import { Card, CardBody } from 'src/components/common/Card'
 import { Button } from 'src/components/common/Button'
 import { Submission } from 'src/models/submission'
 import { ImageryItem } from 'src/components/imageryList'

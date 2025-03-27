@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 
 import { AppWrapper } from 'src/components/AppWrapper'
 
-import '../App.scss'
+import 'src/App.scss'
 
 export const metadata: Metadata = {
   title: 'BODC Data Submission'
