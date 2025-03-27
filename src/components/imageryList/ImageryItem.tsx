@@ -4,11 +4,11 @@ import { Divider } from '@heroui/react'
 import { startCase } from 'lodash'
 import Link from 'next/link'
 
-import { Card, CardHeader, CardBody, CardFooter } from '../../components/common/Card'
-import { Row } from '../../components/common/Grid'
-import { IconButton } from '../../components/common/IconButton'
-import { DRAFT, Submission } from '../../models/submission'
-import { formatUuid } from '../../utils'
+import { Card, CardHeader, CardBody, CardFooter } from 'src/components/common/Card'
+import { Row } from 'src/components/common/Grid'
+import { IconButton } from 'src/components/common/IconButton'
+import { DRAFT, Submission } from 'src/models/submission'
+import { formatUuid } from 'src/utils'
 
 const PDL_BASE_URL = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/data/published_data_library/catalogue/10.5285/`
 

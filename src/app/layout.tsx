@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 
 import type { Metadata } from 'next'
 
-import { AppWrapper } from '../components/AppWrapper'
+import { AppWrapper } from 'src/components/AppWrapper'
 
 import '../App.scss'
 

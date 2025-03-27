@@ -2,10 +2,10 @@
 import axios from 'axios'
 import React, { useCallback, useEffect, useState } from 'react'
 import { Card, CardBody } from '@heroui/react'
-import { Button } from '../components/common/Button'
-import { Submission } from '../models/submission'
-import { ImageryItem } from '../components/imageryList'
-import { Spinner } from '../components/common/Spinner'
+import { Button } from 'src/components/common/Button'
+import { Submission } from 'src/models/submission'
+import { ImageryItem } from 'src/components/imageryList'
+import { Spinner } from 'src/components/common/Spinner'
 
 const PAGE_SIZE = 20
 
