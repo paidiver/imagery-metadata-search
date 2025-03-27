@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Arial';
+}
+
+a {
+  text-decoration: underline;
+}
+
+a:hover {
+  color: hsl(var(--nextui-primary));
+}
+
+a[role=button] {
+  text-decoration: none;
+}
+
+a[role=button]:hover {
+  color: black;
+}
+
+a[role=menuitem] {
+  text-decoration: none;
+}
+
+h1 {
+  @apply font-bold text-xl
+}
+
+h2 {
+  @apply font-bold text-lg
+}
+
+.accordion section {
+  overflow-y: visible!important;
+}
+
+.text-muted {
+  color: #6c757d;
+}
+
+.table {
+  @apply w-full table-auto text-left border-spacing-1 border-collapse
+}
+
+.table td, th {
+  @apply p-2;
+  border-bottom: 1px solid hsl(var(--nextui-secondary));
+}
+
+.table-bordered td, th {
+  border-left: 1px solid hsl(var(--nextui-secondary));
+  border-right: 1px solid hsl(var(--nextui-secondary));
+}
+
+.no-checkbox label {
+  display: none;
+}
+
+.no-checkbox td::before {
+  opacity: 0!important;
+}
+
+// Styles for the WYSIWYG editor
+.rsw-ce ul {
+  list-style: disc;
+  padding-left: 2em;
+}
+
+.rsw-ce ol {
+  list-style: decimal;
+  padding-left: 2em;
+}
+// end WYSIWYG styles
