@@ -26,7 +26,7 @@ interface Params {
 }
 
 const apiClient = axios.create({
-  baseURL: `${process.env.PUBLIC_URL || ''}/api/`
+  baseURL: `${process.env.PUBLIC_URL || 'https://submit-datadev.bodc.ac.uk'}/api/`
 })
 
 
