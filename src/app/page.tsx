@@ -2,9 +2,10 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import axios from 'axios'
-
-import { Card, CardBody } from 'src/components/common/Card'
-import { Button } from 'src/components/common/Button'
+import { Button } from '@heroui/button'
+import { Card, CardBody } from '@heroui/card'
+import { Form } from "@heroui/form";
+import { Input } from "@heroui/input";
 import { Submission } from 'src/models/submission'
 import { ImageryItem } from 'src/components/imageryList'
 import { Spinner } from 'src/components/common/Spinner'
@@ -35,7 +36,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [nextOffset, setNextOffset] = useState<number | null>(PAGE_SIZE)
 
-  const loadData = useCallback(async (offset = 0) => {
+  const loadData = useCallback(async (offset = 0, searchTerm = '') => {
     setIsLoading(true)
     const params: Params = {
       limit: PAGE_SIZE,
@@ -43,7 +44,8 @@ export default function Home() {
     }
 
     params.submission_type = ['imagery']
-    const resp = await apiClient.get('imagery-submissions', { params, paramsSerializer: { indexes: null } })
+    const url = searchTerm !== '' ? 'imagery-submissions?search=' + searchTerm : 'imagery-submissions'
+    const resp = await apiClient.get(url, { params, paramsSerializer: { indexes: null } })
     setSubmissions(resp.data)
     if (resp.data.length === PAGE_SIZE) {
       setNextOffset(offset + PAGE_SIZE)
@@ -58,6 +60,29 @@ export default function Home() {
 
   return (
     <div className='flex flex-col gap-4'>
+      <Form
+        className="w-full max-w-xs flex flex-col gap-4"
+        onSubmit={(e) => {
+          e.preventDefault();
+          const data = Object.fromEntries(new FormData(e.currentTarget))
+
+          let searchTerm = ''
+          if(data.searchterm) searchTerm = data.searchterm.toString()
+          loadData(0, searchTerm)
+        }}
+      >
+        <Input
+          label="Search"
+          name="searchterm"
+          placeholder="Search in dataset title"
+          type="text"
+        />
+        <div className="flex gap-2">
+          <Button color="primary" type="submit">
+            Search
+          </Button>
+        </div>
+      </Form>
       <Card>
         <CardBody className='flex flex-col gap-3'>
           <div className='container'>

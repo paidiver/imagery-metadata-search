@@ -10,10 +10,18 @@
   },
   "dependencies": {
     "@bodc/navbar": "^1.0.5",
-    "@heroui/react": "^2.7.5",
+    "@heroui/button": "^2.2.16",
+    "@heroui/card": "^2.2.15",
+    "@heroui/divider": "^2.2.11",
+    "@heroui/form": "^2.1.15",
+    "@heroui/input": "^2.4.16",
+    "@heroui/spinner": "^2.2.13",
+    "@heroui/system": "^2.4.12",
+    "@heroui/theme": "^2.4.12",
     "axios": "^1.8.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.13",
+    "framer-motion": "^12.6.2",
     "lodash": "^4.17.21",
     "next": "^14.2.13",
     "react": "^18.2.0",
@@ -30,7 +38,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "tailwindcss": "^4",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }

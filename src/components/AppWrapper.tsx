@@ -1,11 +1,12 @@
 'use client'
 import { ReactNode } from 'react'
+import { HeroUIProvider } from "@heroui/system"
 
 import { BodcNavbar } from '@bodc/navbar'
 
 export const AppWrapper = ({ children }: {children: ReactNode}) => {
   return (
-    <>
+    <HeroUIProvider>
       <BodcNavbar
         content={
           <div
@@ -23,6 +24,6 @@ export const AppWrapper = ({ children }: {children: ReactNode}) => {
       <main className='container mt-6' id='app-container'>
         {children}
       </main>
-    </>
+    </HeroUIProvider>
   )
 }

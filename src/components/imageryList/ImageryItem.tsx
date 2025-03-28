@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { Divider } from '@heroui/react'
+import { Divider } from '@heroui/divider'
 import { startCase } from 'lodash'
 import Link from 'next/link'
 
-import { Card, CardHeader, CardBody, CardFooter } from 'src/components/common/Card'
+import { Card, CardHeader, CardBody, CardFooter } from '@heroui/card'
 import { Row } from 'src/components/common/Grid'
 import { IconButton } from 'src/components/common/IconButton'
 import { DRAFT, Submission } from 'src/models/submission'
