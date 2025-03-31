@@ -11,7 +11,6 @@ interface submissionDetailsProps {
 }
 
 export const SubmissionDetails = ( props: submissionDetailsProps ) => {
-  console.log(props.submission)
   const titleise = (item: string) => {
     const words = []
     for (const word of item.split('_')) {
@@ -46,7 +45,7 @@ export const SubmissionDetails = ( props: submissionDetailsProps ) => {
   const directMappings: { key: string, value: string }[] = []
   const tableMappings: TableMapping[] = []
   Object.entries(props.submission).map(([key, value]) => {
-    const hiddenFields = ['originator', 'missing_authors']
+    const hiddenFields = ['originator', 'missing_authors', 'created', 'modified', 'created_by', 'modified_by', 'type', 'status']
     if (hiddenFields.includes(key)) {
       return false
     }
