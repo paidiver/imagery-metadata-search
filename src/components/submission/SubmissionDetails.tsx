@@ -107,7 +107,8 @@ export const SubmissionDetails = ( props: submissionDetailsProps ) => {
 
   return (
     <>
-      <span className='flex gap-2 justify-end'>
+      <span className='flex justify-between'>
+        <h2>Metadata Submission Details</h2>
         <IconButton title='Close submission details'
                     onPress={() => props.close()}
         >
