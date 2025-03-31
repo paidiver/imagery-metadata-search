@@ -15,3 +15,10 @@ export const formatUuid = (uuid: string) => {
   ]
   return parts.join('-')
 }
+
+export const formatDatetime = (datetimeString: string, localFormat = true): string => {
+  if (localFormat) {
+    return dayjs.utc(datetimeString).local().format('D MMM YYYY h:mma')
+  }
+  return dayjs.utc(datetimeString).format('D MMM YYYY h:mma')
+}

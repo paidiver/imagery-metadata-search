@@ -1,20 +1,22 @@
 import React from 'react'
 
 import { Divider } from '@heroui/divider'
-import { startCase } from 'lodash'
 import Link from 'next/link'
 
 import { Card, CardHeader, CardBody, CardFooter } from '@heroui/card'
 import { Col, Row } from 'src/components/common/Grid'
 import { IconButton } from 'src/components/common/IconButton'
-import { DRAFT, Submission } from 'src/models/submission'
+import { Submission } from 'src/models/submission'
 import { formatUuid } from 'src/utils'
 
 const PDL_BASE_URL = `${process.env.NEXT_PUBLIC_WEB_BASE_URL}/data/published_data_library/catalogue/10.5285/`
 
-export const ImageryItem = ({ submission }: {submission: Submission}) => {
+interface imageryItemProps {
+  submission: Submission,
+  updateViewedSubId: (id: string) => void
+}
 
-  const isDraft = submission.status === DRAFT
+export const ImageryItem = ( props: imageryItemProps ) => {
 
   return (
     <>
@@ -22,70 +24,58 @@ export const ImageryItem = ({ submission }: {submission: Submission}) => {
         <CardHeader>
           <div className='w-full flex justify-between'>
             <span>
-              ID: {submission.display_id} | {startCase(submission.status)}
+              ID: {props.submission.display_id}
             </span>
             <span className='flex gap-2'>
               <IconButton
-                as={Link}
-                href={`/submissions/view/${submission.id}`}
                 title='View submission'
+                onPress={() => props.updateViewedSubId(props.submission.id)}
               >
                 <span className='fa fa-eye text-white' />
               </IconButton>
-              {isDraft &&
-                <>
-                  <IconButton
-                    as={Link}
-                    href={`/submissions/edit/${submission.id}`}
-                    title='Edit submission'
-                  >
-                    <span className='fa fa-pencil text-white' />
-                  </IconButton>
-                </>
-              }
             </span>
           </div>
         </CardHeader>
         <Divider />
         <CardBody className='text-sm'>
           <div>
-            <b>{submission.title}</b>
+            <b>{props.submission.title}</b>
           </div>
           <div>
-            {submission.description}
+            {props.submission.description}
           </div>
         </CardBody>
         <Divider />
         <CardFooter className='text-sm flex flex-col gap-1'>
           <Row>
              <Col xs='6'>
-              Originator: {submission.originator &&
+              Originator: {props.submission.originator &&
                 <>
-                  {submission.originator_label?.split(';;;')[0]}
+                  {props.submission.originator_label?.split(';;;')[0]}
                   {' '}
-                  <b>{submission.originator_label?.split(';;;')[1]}</b>
+                  <b>{props.submission.originator_label?.split(';;;')[1]}</b>
                 </>
              }
              </Col>
           </Row>
           <div className='w-full flex justify-between'>
             <div>
-              {submission.ACNO && <>ACNO: {submission.ACNO} </>}
+              {props.submission.ACNO && <>ACNO: {props.submission.ACNO} </>}
             </div>
-            {submission.pdl_uuid &&
+            {props.submission.pdl_uuid &&
               <div className='text-right'>
-                {submission.pdl_published
+                {props.submission.pdl_published
                   ? <>DOI:{' '}
                       <a
-                        href={`${PDL_BASE_URL}${formatUuid(submission.pdl_uuid)}`}
+                        href={`${PDL_BASE_URL}${formatUuid(props.submission.pdl_uuid)}`}
                         target='_blank'
                         rel='noreferrer'
                       >
-                        {submission.pdl_uuid}
+                        {props.submission.pdl_uuid}
                       </a>
                     </>
                   : <>
-                      <Link href={`/doi/${submission.pdl_uuid}`}>
+                      <Link href={`/doi/${props.submission.pdl_uuid}`}>
                         DOI Preview
                       </Link>
                     </>

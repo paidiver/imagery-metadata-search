@@ -9,6 +9,7 @@ import { Input } from "@heroui/input";
 import { Submission } from 'src/models/submission'
 import { ImageryItem } from 'src/components/imageryList'
 import { Spinner } from 'src/components/common/Spinner'
+import { SubmissionDetails } from "src/components/submission/SubmissionDetails"
 
 const PAGE_SIZE = 20
 
@@ -35,6 +36,17 @@ export default function Home() {
   const [submissions, setSubmissions] = useState<Submission[]>([])
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [nextOffset, setNextOffset] = useState<number | null>(PAGE_SIZE)
+  const [viewedSubmission, setViewedSubmission] = useState<Submission | null>()
+  const [viewedSubmissionId, setViewedSubmissionId] = useState<string | null>('')
+
+  const updateViewedSubmission = (id: string):void => {
+    setViewedSubmissionId(id)
+    setViewedSubmission(submissions.find((x) => x.id === id))
+  }
+
+  const closeViewedSubmission = () => {
+    setViewedSubmissionId('')
+  }
 
   const loadData = useCallback(async (offset = 0, searchTerm = '') => {
     setIsLoading(true)
@@ -60,51 +72,62 @@ export default function Home() {
 
   return (
     <div className='flex flex-col gap-4'>
-      <Form
-        className="w-full max-w-xs flex flex-col gap-4"
-        onSubmit={(e) => {
-          e.preventDefault();
-          const data = Object.fromEntries(new FormData(e.currentTarget))
+      {viewedSubmissionId === '' ?
+        <>
+          <Form
+          className="w-full max-w-xs flex flex-col gap-4"
+          onSubmit={(e) => {
+            e.preventDefault()
+            const data = Object.fromEntries(new FormData(e.currentTarget))
 
-          let searchTerm = ''
-          if(data.searchterm) searchTerm = data.searchterm.toString()
-          loadData(0, searchTerm)
-        }}
-      >
-        <Input
-          label="Search"
-          name="searchterm"
-          placeholder="Search in dataset title"
-          type="text"
-        />
-        <div className="flex gap-2">
-          <Button color="primary" type="submit">
-            Search
-          </Button>
-        </div>
-      </Form>
-      <Card>
-        <CardBody className='flex flex-col gap-3'>
-          <div className='container'>
-            <div className='flex flex-col gap-2 mb-4'>
-              {!isLoading && submissions.length === 0 &&
-                  <div>No submissions to display</div>
-              }
-              {submissions.map(submission => (
-                <ImageryItem key={submission.id} submission={submission}/>
-              ))}
-              {isLoading
-                ? <div style={{textAlign: 'center'}}><Spinner/></div>
-                : (nextOffset !== null &&
-                      <Button onPress={() => loadData(nextOffset)}>
-                          Show more
-                      </Button>
-                )
-              }
-            </div>
+            let searchTerm = ''
+            if (data.searchterm) searchTerm = data.searchterm.toString()
+            loadData(0, searchTerm)
+          }}
+        >
+          <Input
+            label="Search"
+            name="searchterm"
+            placeholder="Search in dataset title"
+            type="text"/>
+          <div className="flex gap-2">
+            <Button color="primary" type="submit">
+              Search
+            </Button>
           </div>
-        </CardBody>
-      </Card>
+        </Form><Card>
+          <CardBody className='flex flex-col gap-3'>
+            <div className='container'>
+              <div className='flex flex-col gap-2 mb-4'>
+                {!isLoading && submissions.length === 0 &&
+                    <div>No submissions to display</div>}
+                {submissions.map(submission => (
+                  <ImageryItem key={submission.id} submission={submission} updateViewedSubId={updateViewedSubmission}/>
+                ))}
+                {isLoading
+                  ? <div style={{textAlign: 'center'}}><Spinner/></div>
+                  : (nextOffset !== null &&
+                        <Button onPress={() => loadData(nextOffset)}>
+                            Show more
+                        </Button>
+                  )}
+              </div>
+            </div>
+          </CardBody>
+        </Card>
+        </>
+        : <Card>
+            <CardBody className='flex flex-col gap-3'>
+              <div className='container'>
+                <div className='flex flex-col gap-2 mb-4'>
+                  {viewedSubmission &&
+                      <SubmissionDetails submission={viewedSubmission} close={closeViewedSubmission}/>
+                  }
+                </div>
+              </div>
+            </CardBody>
+          </Card>
+      }
     </div>
-  );
+  )
 }

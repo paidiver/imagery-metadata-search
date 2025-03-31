@@ -1,12 +1,15 @@
 'use client'
 import { ReactNode } from 'react'
 import { HeroUIProvider } from "@heroui/system"
+import { useRouter } from 'next/navigation'
 
 import { BodcNavbar } from '@bodc/navbar'
 
 export const AppWrapper = ({ children }: {children: ReactNode}) => {
+  const router = useRouter()
+
   return (
-    <HeroUIProvider>
+    <HeroUIProvider navigate={router.push}>
       <BodcNavbar
         content={
           <div
