@@ -62,26 +62,6 @@ export const ImageryItem = ( props: imageryItemProps ) => {
             <div>
               {props.submission.ACNO && <>ACNO: {props.submission.ACNO} </>}
             </div>
-            {props.submission.pdl_uuid &&
-              <div className='text-right'>
-                {props.submission.pdl_published
-                  ? <>DOI:{' '}
-                      <a
-                        href={`${PDL_BASE_URL}${formatUuid(props.submission.pdl_uuid)}`}
-                        target='_blank'
-                        rel='noreferrer'
-                      >
-                        {props.submission.pdl_uuid}
-                      </a>
-                    </>
-                  : <>
-                      <Link href={`/doi/${props.submission.pdl_uuid}`}>
-                        DOI Preview
-                      </Link>
-                    </>
-                }
-              </div>
-            }
           </div>
         </CardFooter>
       </Card>
