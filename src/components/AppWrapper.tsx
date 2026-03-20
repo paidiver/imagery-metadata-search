@@ -1,9 +1,8 @@
 'use client'
-import { ReactNode } from 'react'
+import { BodcNavbar } from '@bodc/navbar'
 import { HeroUIProvider } from "@heroui/system"
 import { useRouter } from 'next/navigation'
-
-import { BodcNavbar } from '@bodc/navbar'
+import { ReactNode } from 'react'
 
 export const AppWrapper = ({ children }: {children: ReactNode}) => {
   const router = useRouter()
@@ -23,6 +22,16 @@ export const AppWrapper = ({ children }: {children: ReactNode}) => {
           >
           </div>
         }
+        links={[
+          {
+            href: '/',
+            label: 'Images'
+          },
+          {
+            href: '/annotations',
+            label: 'Annotations'
+          }
+        ]}
       />
       <main className='container mt-6' id='app-container'>
         {children}

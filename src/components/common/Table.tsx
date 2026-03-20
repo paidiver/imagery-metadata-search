@@ -6,7 +6,7 @@ import {
   TableHeader,
   TableProps,
   TableRow
-} from '@heroui/table'
+} from '@heroui/table';
 
 const Table = (props: TableProps) => (
   <LibTable
@@ -16,6 +16,6 @@ const Table = (props: TableProps) => (
     }}
     {...props}
   />
-)
+);
 
-export { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow }
+export { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow };

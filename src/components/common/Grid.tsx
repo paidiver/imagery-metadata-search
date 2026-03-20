@@ -1,29 +1,21 @@
 // Bootstrap-style Row/Col components.
 // Primarily to ease the transition away from bootstrap to TW.
-import { ReactNode } from 'react'
+import classNames from 'classnames';
+import { get } from 'lodash';
+import { ReactNode } from 'react';
 
-import classNames from 'classnames'
-import { get } from 'lodash'
-
-export const Row = ({ children, className }: {children: ReactNode, className?: string}) => (
-  <div
-    className={classNames(
-      className,
-      'grid grid-cols-12 gap-6 w-full'
-    )}
-  >
-    {children}
-  </div>
-)
+export const Row = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <div className={classNames(className, 'grid grid-cols-12 gap-6 w-full')}>{children}</div>
+);
 
 interface ColProps {
-  children: ReactNode
-  className?: string
-  xs?: string
-  sm?: string
-  md?: string
-  lg?: string
-  xl?: string
+  children: ReactNode;
+  className?: string;
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  xl?: string;
 }
 
 // TW class mappings
@@ -41,7 +33,7 @@ const xsClassMap = {
   10: 'col-span-10',
   11: 'col-span-11',
   12: 'col-span-12'
-}
+};
 const smClassMap = {
   1: 'sm:col-span-1',
   2: 'sm:col-span-2',
@@ -55,7 +47,7 @@ const smClassMap = {
   10: 'sm:col-span-10',
   11: 'sm:col-span-11',
   12: 'sm:col-span-12'
-}
+};
 const mdClassMap = {
   1: 'md:col-span-1',
   2: 'md:col-span-2',
@@ -69,7 +61,7 @@ const mdClassMap = {
   10: 'md:col-span-10',
   11: 'md:col-span-11',
   12: 'md:col-span-12'
-}
+};
 const lgClassMap = {
   1: 'lg:col-span-1',
   2: 'lg:col-span-2',
@@ -83,7 +75,7 @@ const lgClassMap = {
   10: 'lg:col-span-10',
   11: 'lg:col-span-11',
   12: 'lg:col-span-12'
-}
+};
 const xlClassMap = {
   1: 'xl:col-span-1',
   2: 'xl:col-span-2',
@@ -97,17 +89,19 @@ const xlClassMap = {
   10: 'xl:col-span-10',
   11: 'xl:col-span-11',
   12: 'xl:col-span-12'
-}
+};
 
 export const Col = ({ children, className, xs = '12', sm, md, lg, xl }: ColProps) => (
-  <div className={classNames(
-    className,
-    xs ? get(xsClassMap, xs) : '',
-    sm ? get(smClassMap, sm) : '',
-    md ? get(mdClassMap, md) : '',
-    lg ? get(lgClassMap, lg) : '',
-    xl ? get(xlClassMap, xl) : ''
-  )}>
+  <div
+    className={classNames(
+      className,
+      xs ? get(xsClassMap, xs) : '',
+      sm ? get(smClassMap, sm) : '',
+      md ? get(mdClassMap, md) : '',
+      lg ? get(lgClassMap, lg) : '',
+      xl ? get(xlClassMap, xl) : ''
+    )}
+  >
     {children}
   </div>
-)
+);
