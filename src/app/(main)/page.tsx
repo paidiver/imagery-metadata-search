@@ -26,10 +26,7 @@ interface Params {
   submission_type?: string[];
 }
 
-const API_BASE =
-  process.env.NODE_ENV === 'development'
-    ? '/api/'
-    : `${process.env.NEXT_PUBLIC_PUBLIC_URL || 'https://submit-data.bodc.ac.uk'}/api/`;
+const API_BASE = `${process.env.NEXT_PUBLIC_SUBMISSION_API || 'https://submit-data.bodc.ac.uk'}/api/`;
 
 const apiClient = axios.create({
   baseURL: API_BASE

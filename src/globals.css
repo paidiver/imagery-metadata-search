@@ -37,6 +37,12 @@
     @apply text-lg font-bold;
   }
 
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .accordion section {
     overflow-y: visible !important;
   }

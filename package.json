@@ -11,6 +11,8 @@
   "dependencies": {
     "@bodc/navbar": "^1.0.5",
     "@heroicons/react": "^2.2.0",
+    "@heroui/accordion": "^2.2.29",
+    "@heroui/autocomplete": "^2.3.34",
     "@heroui/button": "^2.2.32",
     "@heroui/card": "^2.2.28",
     "@heroui/chip": "^2.2.25",
@@ -27,6 +29,7 @@
     "dayjs": "^1.11.20",
     "lodash": "^4.17.23",
     "next": "16.1.6",
+    "qs": "^6.15.0",
     "react": "19.2.3",
     "react-dom": "19.2.3"
   },
@@ -36,6 +39,7 @@
     "@tailwindcss/postcss": "^4.2.2",
     "@types/lodash": "^4.17.24",
     "@types/node": "^20",
+    "@types/qs": "^6.15.0",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.56.0",

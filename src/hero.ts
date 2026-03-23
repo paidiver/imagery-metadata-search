@@ -1,4 +1,18 @@
-// import { heroui } from "@heroui/react";
-// or import from theme package if you are using individual packages.
 import { heroui } from '@heroui/theme';
-export default heroui();
+
+export default heroui({
+  themes: {
+    light: {
+      colors: {
+        primary: '#00b5ff',
+        secondary: '#e7e6e6',
+        success: '#5ed496',
+        warning: '#ffaf0a',
+        danger: {
+          foreground: '#ffffff',
+          DEFAULT: '#eb1f24'
+        }
+      }
+    }
+  }
+});
