@@ -43,6 +43,10 @@ export function useAnnotationsSearch() {
 
     try {
       const data = await fetchGroupedAnnotations(page, activeSearchTerm, activeIncludeDescendants);
+      if (!data) {
+        resetResults();
+        return;
+      }
 
       setCount(data.count);
       setSummary(data.results.summary);
