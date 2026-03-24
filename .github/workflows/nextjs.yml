@@ -51,8 +51,8 @@ jobs:
       - name: Environment variables
         run: |
           echo "NEXT_PUBLIC_SUBMISSION_API=https://submit-data.bodc.ac.uk" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_ANNOTATIONS_API=http://localhost:8000" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_WORMS_API=http://localhost:8001" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_ANNOTATIONS_API=https://annotations.bodc.uk" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_WORMS_API=https://worms-cache.paidiver.site" >> $GITHUB_ENV
 
       - name: Setup Node
         uses: actions/setup-node@v4
