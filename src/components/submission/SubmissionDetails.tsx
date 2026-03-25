@@ -1,8 +1,8 @@
 import React from "react"
+import { IconButton } from "src/components/common/IconButton"
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from 'src/components/common/Table'
 import { Author, Parameter, Platform, Submission } from "src/models/submission"
 import { formatDatetime } from 'src/utils'
-import { IconButton } from "src/components/common/IconButton"
 
 
 interface submissionDetailsProps {

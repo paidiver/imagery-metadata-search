@@ -1,7 +1,6 @@
-import React from 'react'
-
-import { Spinner as LibSpinner, SpinnerProps } from '@heroui/spinner'
+import { Spinner as LibSpinner, SpinnerProps } from '@heroui/spinner';
+import React from 'react';
 
 export const Spinner = (props: SpinnerProps) => {
-  return <LibSpinner data-testid='loading-spinner' {...props} />
-}
+  return <LibSpinner data-testid="loading-spinner" {...props} />;
+};
