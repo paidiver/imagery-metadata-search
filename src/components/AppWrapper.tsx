@@ -24,12 +24,16 @@ export const AppWrapper = ({ children }: {children: ReactNode}) => {
         }
         links={[
           {
-            href: '/',
-            label: 'Images'
+            href: '/image-sets',
+            label: 'Image sets'
           },
           {
-            href: '/annotations',
-            label: 'Annotations'
+            href: '/annotation-sets',
+            label: 'Annotation sets'
+          },
+          {
+            href: '/label-sets',
+            label: 'Label sets'
           }
         ]}
       />
